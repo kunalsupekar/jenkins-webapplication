@@ -9,6 +9,16 @@ AWS ECS to create a sample Docker image for running a web application
 - AWS ECR repository created
 - ECS cluster created
 
+## Project Structure:
+```
+ecs-docker-webapp/
+├── app/
+│   └── index.html
+├── Dockerfile
+├── ecs-task-definition.json
+└── README.md
+```
+
 ## Steps
 
 1. **Clone the repository:**
@@ -26,12 +36,16 @@ aws ecr get-login-password --region <YOUR_REGION> | docker login --username AWS 
 docker tag ecs-docker-webapp:latest <YOUR_ECR_URL>:latest
 docker push <YOUR_ECR_URL>:latest
 ```
-4. **Register ECS Task Definition:**
+4. **Create ECS Cluster:**
+Navigate to ECS in the AWS Management Console and create a new ECS cluster (Fargate).
+
+5. **Register ECS Task Definition:**
 Use the ecs-task-definition.json to register a new task definition in ECS.
 
 6. **Deploy to ECS:**
 Create a service in your ECS cluster, link it to the task definition, and deploy the web application.
+Expose the service via a load balancer to access the web app
 
-8. **Access the Web Application:**
+7. **Access the Web Application:**
 After the service is running, access the application via the Load Balancer’s DNS.
 The application is a simple HTML page served by an Nginx web server.
