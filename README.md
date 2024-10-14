@@ -96,6 +96,8 @@ examples:
   "taskRoleArn": "arn:aws:iam::021891610508:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
 }
 ```
+Task Definition >> Create New Definition
+Deploy >> Create Service 
 
 7. **Deploy to ECS:**
 Create a service in your ECS cluster, link it to the task definition, and deploy the web application.
@@ -104,3 +106,7 @@ Expose the service via a load balancer to access the web app
 8. **Access the Web Application:**
 After the service is running, access the application via the Load Balancer’s DNS.
 The application is a simple HTML page served by an Nginx web server.
+
+## Troubleshoot
+ERROR: Cannot connect to the Docker daemon at unix:///Users/atul/.docker/run/docker.sock. Is the docker daemon running?
+Solution: Make sure docker engine/docker desktop is in running state.
