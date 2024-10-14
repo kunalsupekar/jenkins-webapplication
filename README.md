@@ -22,9 +22,9 @@ ecs-docker-webapp/
 - AWS CLI
 - DOCKER ENGINE/DESKTOP
 
-Create user >> add to admin group >> apply full-admin-access policy >> security >> create access keys
-install awscli >> aws --version >> aws configure
-enter access key, secret access key, region-code, outpute-json 
+| Create user >> add to admin group >> apply full-admin-access policy >> security >> create access keys
+| install awscli >> aws --version >> aws configure
+| enter access key, secret access key, region-code, outpute-json 
 
 ## Steps
 
