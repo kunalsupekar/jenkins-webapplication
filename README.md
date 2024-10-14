@@ -57,10 +57,50 @@ Navigate to ECS in the AWS Management Console and create a new ECS cluster (Farg
 5. **Register ECS Task Definition:**
 Use the ecs-task-definition.json to register a new task definition in ECS.
 
-6. **Deploy to ECS:**
+Create ECS Cluster | cluster name - mycluster
+IAM - Create Role - Elastic Container Service(Allows ECS to create and manage AWS resources on your behalf) | Name - ECSRole
+IAM - Create Role - Elastic Container Service Task (Allows ECS tasks to call AWS services on your behalf) | Name - ECSTaskRole
+
+note down ECSRole, ECSServiceRole ARN, Image URL to update in JSON file
+examples:
+arn:aws:iam::021891610508:role/ECSRole
+arn:aws:iam::021891610508:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS
+public.ecr.aws/t2r6c7e4/atulkamble:latest
+
+```
+{
+  "family": "ecs-docker-webapp",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "webapp-container",
+      "image": "public.ecr.aws/t2r6c7e4/atulkamble:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "memory": 512,
+      "cpu": 256
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::021891610508:role/ECSRole",
+  "taskRoleArn": "arn:aws:iam::021891610508:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+}
+```
+
+7. **Deploy to ECS:**
 Create a service in your ECS cluster, link it to the task definition, and deploy the web application.
 Expose the service via a load balancer to access the web app
 
-7. **Access the Web Application:**
+8. **Access the Web Application:**
 After the service is running, access the application via the Load Balancer’s DNS.
 The application is a simple HTML page served by an Nginx web server.
