@@ -1,5 +1,5 @@
 # Use the official Nginx image
-FROM nginx:alpine
+FROM nginx:latest
 
 # Copy the HTML file to the Nginx default location
 COPY app/index.html /usr/share/nginx/html/index.html
