@@ -18,6 +18,13 @@ ecs-docker-webapp/
 ├── ecs-task-definition.json
 └── README.md
 ```
+## Prerequisite
+- AWS CLI
+- DOCKER ENGINE/DESKTOP
+
+Create user >> add to admin group >> apply full-admin-access policy >> security >> create access keys
+install awscli >> aws --version >> aws configure
+enter access key, secret access key, region-code, outpute-json 
 
 ## Steps
 
@@ -31,11 +38,19 @@ cd ecs-docker-webapp
 docker build -t ecs-docker-webapp .
 example: sudo docker build -t atuljkamble/ecs-docker-webapp .
 ```
+
 3. **Push to ECR:**
+Create public repo | name-atulkamble >> view push commands
 ```
 aws ecr get-login-password --region <YOUR_REGION> | docker login --username AWS --password-stdin <YOUR_ECR_URL>
 docker tag ecs-docker-webapp:latest <YOUR_ECR_URL>:latest
 docker push <YOUR_ECR_URL>:latest
+example:
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/t2r6c7e4
+// login succeeded
+docker build -t atulkamble .
+docker tag atulkamble:latest public.ecr.aws/t2r6c7e4/atulkamble:latest
+docker push public.ecr.aws/t2r6c7e4/atulkamble:latest
 ```
 4. **Create ECS Cluster:**
 Navigate to ECS in the AWS Management Console and create a new ECS cluster (Fargate).
