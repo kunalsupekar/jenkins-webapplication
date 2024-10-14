@@ -29,6 +29,7 @@ cd ecs-docker-webapp
 2. **Build Docker Image:**
 ```
 docker build -t ecs-docker-webapp .
+example: sudo docker build -t atuljkamble/ecs-docker-webapp .
 ```
 3. **Push to ECR:**
 ```
