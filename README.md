@@ -63,9 +63,9 @@ IAM - Create Role - Elastic Container Service Task (Allows ECS tasks to call AWS
 
 note down ECSRole, ECSServiceRole ARN, Image URL to update in JSON file
 examples:
-arn:aws:iam::021891610508:role/ECSRole
-arn:aws:iam::021891610508:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS
-public.ecr.aws/t2r6c7e4/atulkamble:latest
+- arn:aws:iam::021891610508:role/ECSRole
+- arn:aws:iam::021891610508:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS
+- public.ecr.aws/t2r6c7e4/atulkamble:latest
 
 ```
 {
