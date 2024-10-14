@@ -12,10 +12,10 @@ AWS ECS to create a sample Docker image for running a web application
 ## Steps
 
 1. **Clone the repository:**
-   ```bash
+```
    git clone https://github.com/yourusername/ecs-docker-webapp.git
    cd ecs-docker-webapp
-   ```
+```
 2. **Build Docker Image:**
 ```
 docker build -t ecs-docker-webapp .
