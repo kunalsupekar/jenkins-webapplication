@@ -3,25 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Nginx Server</title>
+    <title>Interactive Webpage</title>
     <style>
+        /* Background animation */
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6f61, #6a5acd, #00bcd4, #ffeb3b);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            font-family: 'Arial', sans-serif;
+            color: white;
             text-align: center;
-            background-color: #f4f4f9;
-            padding: 50px;
         }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            z-index: 1;
+            padding: 40px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
         h1 {
-            color: #333;
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
+
         p {
-            font-size: 18px;
-            color: #666;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Nginx Web Application!</h1>
-    <p>This is a simple web page served by an Nginx container. Your Docker container is running successfully.</p>
+
+    <div class="content">
+        <h1>Welcome to My Interactive Webpage!</h1>
+        <p id="message">Click the button to change this text!</p>
+        <button onclick="changeText()">Click Me!</button>
+    </div>
+
+    <script>
+        function changeText() {
+            const message = document.getElementById('message');
+            message.innerHTML = "The text has been changed! Isn't this fun?";
+        }
+    </script>
+
 </body>
 </html>
